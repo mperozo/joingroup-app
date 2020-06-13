@@ -3,20 +3,20 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import ListSubheader from '@material-ui/core/ListSubheader';
-import DashboardIcon from '@material-ui/icons/Dashboard';
 import ContactSupportIcon from '@material-ui/icons/ContactSupport';
 import PeopleIcon from '@material-ui/icons/People';
 import AssignmentIcon from '@material-ui/icons/Assignment';
+import ViewModuleIcon from '@material-ui/icons/ViewModule';
 
 export const mainListItems = (
   <div>
-    <ListItem button>
+    <ListItem button component="a" href="#/consultar-campanhas">
       <ListItemIcon>
-        <DashboardIcon />
+        <ViewModuleIcon />
       </ListItemIcon>
       <ListItemText primary="Campanhas" />
     </ListItem>
-    <ListItem button>
+    <ListItem button component="a" href="#/consultar-leads">
       <ListItemIcon>
         <PeopleIcon />
       </ListItemIcon>
