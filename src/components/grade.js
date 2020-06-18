@@ -3,8 +3,6 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 
-import Cartao from '../components/cartao';
-
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -14,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Grade() {
+export default function Grade(props) {
   const [spacing, setSpacing] = React.useState(2);
   const classes = useStyles();
 
@@ -24,14 +22,8 @@ export default function Grade() {
 
   return (
     <Grid container className={classes.root} spacing={2}>
-      <Grid item xs={12}>
-        <Grid container justify="center" spacing={spacing}>
-          {[0, 1, 2, 3].map((value) => (
-            <Grid key={value} item>
-              <Cartao/>
-            </Grid>
-          ))}
-        </Grid>
+      <Grid item xs={12} container justify="center" spacing={spacing}>
+          {props.children}
       </Grid>
     </Grid>
   );

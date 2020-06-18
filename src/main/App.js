@@ -1,6 +1,5 @@
 import React from 'react';
 
-import Rotas from './rotas'
 import Dashboard from '../components/dashboard'
 
 
@@ -10,9 +9,6 @@ class App extends React.Component {
     return (
       <>
         <Dashboard />
-        <div className="container">
-          <Rotas />
-        </div>
       </>
     )
   }

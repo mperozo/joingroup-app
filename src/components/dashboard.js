@@ -200,9 +200,7 @@ export default function Dashboard() {
       </Drawer>
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
-
         <Rotas />
-
         <Box pt={4}>
           <Copyright />
         </Box>
