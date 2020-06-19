@@ -7,10 +7,13 @@ import Cartao from '../../components/cartao';
 
 import { withRouter } from 'react-router-dom'
 
+import CampanhaService from '../../main/services/campanhaService'
+
 class ConsultarCampanhas extends React.Component {
 
     state = {
-        campanhas: [
+        campanhas: [],
+        campanhasMock: [
             {
                 id: 1,
                 nome: "Teste1",
@@ -26,6 +29,24 @@ class ConsultarCampanhas extends React.Component {
                 quantidadeRedirecionamentos: 220
             }
         ]
+    }
+
+    constructor() {
+        super();
+        this.campanhaService = new CampanhaService();
+
+        this.buscarCampanhasDoUsuarioLogado();
+    }
+
+    buscarCampanhasDoUsuarioLogado() {
+        this.campanhaService.findByIdUsuario(1)
+            .then(response => {
+                this.setState({campanhas: response.data})
+            }).catch(error => {
+                //messages.mensagemErro(error.response.data)
+                console.log("Ocorreu um erro ao buscar campanhas de um usuário.");
+                console.log(error.response.data);
+            })
     }
 
     render() {
