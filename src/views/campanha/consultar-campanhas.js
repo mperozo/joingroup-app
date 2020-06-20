@@ -12,8 +12,8 @@ import CampanhaService from '../../main/services/campanhaService'
 class ConsultarCampanhas extends React.Component {
 
     state = {
-        campanhas: [],
-        campanhasMock: [
+        //campanhas: [],
+        campanhas: [
             {
                 id: 1,
                 nome: "Teste1",
@@ -41,11 +41,11 @@ class ConsultarCampanhas extends React.Component {
     buscarCampanhasDoUsuarioLogado() {
         this.campanhaService.findByIdUsuario(1)
             .then(response => {
-                this.setState({campanhas: response.data})
+                //this.setState({campanhas: response.data})
             }).catch(error => {
                 //messages.mensagemErro(error.response.data)
                 console.log("Ocorreu um erro ao buscar campanhas de um usuário.");
-                console.log(error.response.data);
+                //console.log(error.response.data);
             })
     }
 
@@ -59,7 +59,7 @@ class ConsultarCampanhas extends React.Component {
                         url={campanha.url}
                         descricao={"Grupos: " + campanha.quantidadeGrupos + "Redirecionamentos: " + campanha.quantidadeRedirecionamentos}
                     >
-                        <Button size="medium">Grupos</Button>
+                        <Button size="large">Grupos</Button>
                     </Cartao>
                 ))}
             </Grade>
