@@ -1,9 +1,12 @@
 import React from 'react'
 
-import Button from '@material-ui/core/Button';
 
 import Grade from '../../components/grade'
 import Cartao from '../../components/cartao';
+
+import Button from '@material-ui/core/Button';
+import Fab from '@material-ui/core/Fab';
+import AddIcon from '@material-ui/icons/Add';
 
 import { withRouter } from 'react-router-dom'
 
@@ -62,6 +65,9 @@ class ConsultarCampanhas extends React.Component {
                         <Button size="large">Grupos</Button>
                     </Cartao>
                 ))}
+                <Fab color="blueGrey" aria-label="add" >
+                    <AddIcon />
+                </Fab>
             </Grade>
         )
     }
