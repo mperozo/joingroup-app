@@ -21,7 +21,7 @@ export default class CampanhaService extends ApiService {
     }
 
     save(campanha) {
-        return this.post(`/campanhas/save`, campanha)
+        return this.post(`/campanhas/`, campanha)
     }
 
     update(campanha) {
