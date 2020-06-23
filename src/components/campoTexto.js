@@ -7,7 +7,17 @@ const useStyles = makeStyles((theme) => ({
         display: 'flex',
         flexWrap: 'wrap',
     },
-    textField: {
+    textFieldBig: {
+        marginLeft: theme.spacing(1),
+        marginRight: theme.spacing(1),
+        width: '100ch',
+    },
+    textFieldMedium: {
+        marginLeft: theme.spacing(1),
+        marginRight: theme.spacing(1),
+        width: '50ch',
+    },
+    textFieldSmall: {
         marginLeft: theme.spacing(1),
         marginRight: theme.spacing(1),
         width: '25ch',
@@ -23,7 +33,7 @@ export default function CampoTexto(props) {
                 label={props.label}
                 id="outlined-margin-normal"
                 defaultValue=""
-                className={classes.textField}
+                className={classes.textFieldBig}
                 helperText={props.helperText}
                 margin="normal"
                 variant="outlined"
