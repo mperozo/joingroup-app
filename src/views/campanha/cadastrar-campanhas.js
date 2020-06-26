@@ -37,10 +37,11 @@ class CadastrarCampanhas extends React.Component {
         this.campanhaService.save(campanha)
             .then(response => {
                 this.props.history.push('/consultar-campanhas')
-                toast.mensagemSucesso("Campanha cadastrada com sucesso!")
+                //toast.mensagemSucesso("Campanha cadastrada com sucesso!")
                 console.log("Campanha cadastrada com sucesso: " + campanha.nome);
             }).catch(error => {
-                toast.mensagemErro("Erro ao tentar cadastrar campanha: " + error.response ? error.response.data : error.response);
+                console.log("teste");
+                //toast.mensagemErro("Erro ao tentar cadastrar campanha: " + error.response ? error.response.data : error.response);
                 console.log("Erro ao tentar cadastrar campanha: " + error.response ? error.response.data : error.response);
             });
 

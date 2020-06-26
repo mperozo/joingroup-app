@@ -15,23 +15,7 @@ import CampanhaService from '../../main/services/campanhaService'
 class ConsultarCampanhas extends React.Component {
 
     state = {
-        campanhas: [],
-        campanhasMock: [
-            {
-                id: 1,
-                nome: "Teste1",
-                url: "www.campanha1.com.br",
-                quantidadeGrupos: 3,
-                quantidadeRedirecionamentos: 250
-            },
-            {
-                id: 2,
-                nome: "Teste2",
-                url: "www.campanha2.com.br",
-                quantidadeGrupos: 5,
-                quantidadeRedirecionamentos: 220
-            }
-        ]
+        campanhas: []
     }
 
     constructor() {
@@ -54,7 +38,7 @@ class ConsultarCampanhas extends React.Component {
 
     render() {
         return (
-            <Grid container spacing={1} alignItems="flex-end" flexGrow={1}>
+            <Grid container spacing={1} alignItems="flex-end">
                 <Grid item campanhas={this.state.campanhas} xs={12} container justify="center" spacing={2}>
                     {this.state.campanhas.map((campanha) => (
                         <Cartao key={campanha.id}
@@ -63,10 +47,10 @@ class ConsultarCampanhas extends React.Component {
                             url={campanha.url}
                             descricao={"Grupos: " + campanha.quantidadeGrupos + "Redirecionamentos: " + campanha.quantidadeRedirecionamentos}
                         >
-                            <Button size="large">Grupos</Button>
+                            <Button href={`/#consultar-grupos/${campanha.id}`} size="large">Grupos</Button>
                         </Cartao>
                     ))}
-                    <Fab color="blueGrey" aria-label="add" button href="#/cadastrar-campanhas" >
+                    <Fab aria-label="add" href="#/cadastrar-campanhas" >
                         <AddIcon />
                     </Fab>
                 </Grid>
