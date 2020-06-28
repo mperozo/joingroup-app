@@ -13,7 +13,6 @@ import Menu from '@material-ui/core/Menu';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 
-
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
@@ -83,10 +82,10 @@ export default function Cartao(props) {
               open={openUserMenu}
               onClose={handleUserMenuClose}
             >
-              <MenuItem onClick={handleUserMenuClose}>
+              <MenuItem>
                 <EditIcon />
               </MenuItem>
-              <MenuItem onClick={handleUserMenuClose}>
+              <MenuItem onClick={e => props.deleteAction(props.idCampanha)}>
                 <DeleteIcon />
               </MenuItem>
             </Menu>
