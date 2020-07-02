@@ -16,7 +16,7 @@ export default class CampanhaService extends ApiService {
         return this.get(`/campanhas/${id}`)
     }
 
-    delete(id) {
+    deleteById(id) {
         return this.delete(`/campanhas/${id}`)
     }
 

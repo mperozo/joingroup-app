@@ -85,7 +85,7 @@ export default function Cartao(props) {
               <MenuItem>
                 <EditIcon />
               </MenuItem>
-              <MenuItem onClick={e => props.deleteAction(props.idCampanha)}>
+              <MenuItem onClick={e => props.deleteAction(props.id)}>
                 <DeleteIcon />
               </MenuItem>
             </Menu>

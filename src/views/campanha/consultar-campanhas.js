@@ -42,13 +42,20 @@ class ConsultarCampanhas extends React.Component {
     }
 
     deletarCampanha = () => {
-        console.log('deletar')
-        console.log(this.state.idCampanha)
+        this.campanhaService.deleteById(this.state.idCampanhaADeletar)
+            .then(response => {
+                const campanhas = this.state.campanhas;
+                const elementPosition = campanhas.map(function(x) {return x.id; }).indexOf(this.state.idCampanhaADeletar);
+                campanhas.splice(elementPosition, 1);
+                this.setState({campanhas: campanhas, showConfirmDialog: false, idCampanhaADeletar: '' })
+                console.log("Campanha deletada com sucesso!");
+            }).catch(error => {
+                console.log("Ocorreu um erro ao deletar a campanha.");
+            })
     }
 
-    abrirDialogConfirmarExclusao = (idCampanha) => {
-        console.log(idCampanha);
-        this.setState({ showConfirmDialog: true, idCampanhaADeletar: idCampanha })
+    abrirDialogConfirmarExclusao = (id) => {
+        this.setState({ showConfirmDialog: true, idCampanhaADeletar: id })
     }
 
     fecharDialogConfirmarExclusao = () => {
@@ -62,7 +69,7 @@ class ConsultarCampanhas extends React.Component {
                     <Grid item campanhas={this.state.campanhas} xs={12} container justify="center" spacing={2}>
                         {this.state.campanhas.map((campanha) => (
                             <Cartao key={campanha.id}
-                                idCampanha={campanha.id}
+                                id={campanha.id}
                                 titulo={"Campanha"}
                                 nome={campanha.nome}
                                 url={campanha.url}
@@ -77,10 +84,10 @@ class ConsultarCampanhas extends React.Component {
                         </Fab>
                     </Grid>
                 </Grid>
-                <ConfirmationDialog 
+                <ConfirmationDialog
                     visible={this.state.showConfirmDialog}
                     titulo="Tem certeza que deseja excluir a campanha?"
-                    texto="Essa ação não poderá ser desfeita." 
+                    texto="Todos os grupos dessa campanha também serão excluídos. Essa ação não poderá ser desfeita."
                     closeAction={this.fecharDialogConfirmarExclusao}
                     confirmAction={this.deletarCampanha}>
                 </ConfirmationDialog>

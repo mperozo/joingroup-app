@@ -15,4 +15,8 @@ export default class GrupoService extends ApiService {
         return this.post(`/grupos/`, grupo)
     }
 
+    deleteById(id) {
+        return this.delete(`/grupos/${id}`)
+    }
+
 }
