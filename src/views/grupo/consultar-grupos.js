@@ -40,6 +40,10 @@ class ConsultarGrupos extends Component {
             })
     }
 
+    editar = (id) => {
+        this.props.history.push(`/cadastrar-grupos/${this.props.match.params.idCampanha}/${id}`)
+    }
+
     deletarGrupo = () => {
         this.grupoService.deleteById(this.state.idGrupoADeletar)
             .then(response => {
@@ -73,6 +77,7 @@ class ConsultarGrupos extends Component {
                                 nome={grupo.nome}
                                 url={grupo.url}
                                 deleteAction={this.abrirDialogConfirmarExclusao}
+                                editAction={this.editar}
                             />
                         ))}
                         <Fab aria-label="add" href={`/#cadastrar-grupos/${this.props.match.params.idCampanha}`} >

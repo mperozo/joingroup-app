@@ -10,9 +10,17 @@ export default class GrupoService extends ApiService {
         return this.get(`/campanhas/${id}/grupos`)
     }
 
+    findById(id) {
+        return this.get(`/grupos/${id}`)
+    }
+
     save(grupo) {
         console.log(grupo);
         return this.post(`/grupos/`, grupo)
+    }
+
+    update(grupo) {
+        return this.put(`/grupos/update/${grupo.id}`, grupo)
     }
 
     deleteById(id) {

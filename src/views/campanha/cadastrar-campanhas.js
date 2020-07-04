@@ -30,13 +30,12 @@ class CadastrarCampanhas extends React.Component {
     constructor() {
         super();
         this.campanhaService = new CampanhaService();
-        this.setState({ nome: 'teste3' })
     }
 
     componentDidMount() {
-        const params = this.props.match.params;
-        if (params.id) {
-            this.carregarCamposParaEditarCampanha(params.id);
+        const id = this.props.match.params.id;
+        if (id) {
+            this.carregarCamposParaEditarCampanha(id);
         }
     }
 
