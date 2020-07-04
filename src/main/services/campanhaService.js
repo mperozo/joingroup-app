@@ -25,7 +25,7 @@ export default class CampanhaService extends ApiService {
     }
 
     update(campanha) {
-        return this.put(`/campanhas/${campanha.id}`, campanha)
+        return this.put(`/campanhas/update/${campanha.id}`, campanha)
     }
 
     validar(campanha) {

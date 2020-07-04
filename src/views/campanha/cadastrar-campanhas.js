@@ -15,36 +15,64 @@ import { withRouter } from 'react-router-dom'
 class CadastrarCampanhas extends React.Component {
 
     state = {
+        id: '',
         nome: '',
         empresa: '',
         link: '',
         groupClickLimit: '',
         telefoneSuporte: '',
         endUrl: '',
-        tipoRedirect: 'DIRETO'
+        tipoRedirect: 'DIRETO',
+
+        isEditarCampanha: false
     }
 
     constructor() {
         super();
         this.campanhaService = new CampanhaService();
+        this.setState({ nome: 'teste3' })
+    }
+
+    componentDidMount() {
+        const params = this.props.match.params;
+        if (params.id) {
+            this.carregarCamposParaEditarCampanha(params.id);
+        }
+    }
+
+    carregarCamposParaEditarCampanha(idCampanha) {
+        this.campanhaService
+            .findById(idCampanha)
+            .then(response => {
+                const { id, nome, empresa, link, groupClickLimit, telefoneSuporte, endUrl, tipoRedirect } = response.data;
+                this.setState({ id, nome, empresa, link, groupClickLimit, telefoneSuporte, endUrl, tipoRedirect, isEditarCampanha: true });
+            })
+            .catch(error => {
+                console.log("Erro ao carregar campanha para edição.")
+            })
     }
 
     salvar = () => {
+        const { id, nome, empresa, link, groupClickLimit, telefoneSuporte, endUrl, tipoRedirect } = this.state;
+        const campanha = { id, nome, empresa, link, groupClickLimit, telefoneSuporte, endUrl, tipoRedirect }
 
-        const { nome, empresa, link, groupClickLimit, telefoneSuporte, endUrl, tipoRedirect } = this.state;
-        const campanha = { nome, empresa, link, groupClickLimit, telefoneSuporte, endUrl, tipoRedirect }
-
-        this.campanhaService.save(campanha)
-            .then(response => {
-                this.props.history.push('/consultar-campanhas')
-                //toast.mensagemSucesso("Campanha cadastrada com sucesso!")
-                console.log("Campanha cadastrada com sucesso: " + campanha.nome);
-            }).catch(error => {
-                console.log("teste");
-                //toast.mensagemErro("Erro ao tentar cadastrar campanha: " + error.response ? error.response.data : error.response);
-                console.log("Erro ao tentar cadastrar campanha: " + error.response ? error.response.data : error.response);
-            });
-
+        if (this.state.isEditarCampanha) {
+            this.campanhaService.update(campanha)
+                .then(response => {
+                    this.props.history.push('/consultar-campanhas')
+                    console.log("Campanha editada com sucesso: " + campanha.nome);
+                }).catch(error => {
+                    console.log("Erro ao tentar cadastrar campanha: " + error.response ? error.response.data : error.response);
+                });
+        } else {
+            this.campanhaService.save(campanha)
+                .then(response => {
+                    this.props.history.push('/consultar-campanhas')
+                    console.log("Campanha cadastrada com sucesso: " + campanha.nome);
+                }).catch(error => {
+                    console.log("Erro ao tentar cadastrar campanha: " + error.response ? error.response.data : error.response);
+                });
+        }
     }
 
     render() {

@@ -82,7 +82,7 @@ export default function Cartao(props) {
               open={openUserMenu}
               onClose={handleUserMenuClose}
             >
-              <MenuItem>
+              <MenuItem onClick={e => props.editAction(props.id)}>
                 <EditIcon />
               </MenuItem>
               <MenuItem onClick={e => props.deleteAction(props.id)}>

@@ -15,7 +15,7 @@ export default function Rotas() {
         <HashRouter>
             <Switch>
                 <Route path="/consultar-campanhas" component={ConsultarCampanhas} />
-                <Route path="/cadastrar-campanhas" component={CadastrarCampanhas} />
+                <Route path="/cadastrar-campanhas/:id?" component={CadastrarCampanhas} />
                 <Route path="/consultar-leads" component={ConsultarLeads} />
                 <Route path="/consultar-grupos/:idCampanha" component={ConsultarGrupos} />
                 <Route path="/cadastrar-grupos/:idCampanha" component={CadastrarGrupos} />

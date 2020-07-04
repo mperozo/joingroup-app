@@ -30,13 +30,14 @@ export default function CampoTexto(props) {
     return (
         <div className={classes.root}>
             <TextField
+                id={props.id}
                 label={props.label}
-                id="outlined-margin-normal"
                 defaultValue=""
                 className={classes.textFieldBig}
                 helperText={props.helperText}
                 margin="normal"
                 variant="outlined"
+                value={props.value}
                 onChange={props.evento}
             />
         </div>

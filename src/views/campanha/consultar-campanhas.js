@@ -41,6 +41,18 @@ class ConsultarCampanhas extends React.Component {
             })
     }
 
+    abrirDialogConfirmarExclusao = (id) => {
+        this.setState({ showConfirmDialog: true, idCampanhaADeletar: id })
+    }
+
+    fecharDialogConfirmarExclusao = () => {
+        this.setState({ showConfirmDialog: false, idCampanhaADeletar: '' })
+    }
+
+    editar = (id) => {
+        this.props.history.push(`/cadastrar-campanhas/${id}`)
+    }
+
     deletarCampanha = () => {
         this.campanhaService.deleteById(this.state.idCampanhaADeletar)
             .then(response => {
@@ -52,14 +64,6 @@ class ConsultarCampanhas extends React.Component {
             }).catch(error => {
                 console.log("Ocorreu um erro ao deletar a campanha.");
             })
-    }
-
-    abrirDialogConfirmarExclusao = (id) => {
-        this.setState({ showConfirmDialog: true, idCampanhaADeletar: id })
-    }
-
-    fecharDialogConfirmarExclusao = () => {
-        this.setState({ showConfirmDialog: false, idCampanhaADeletar: '' })
     }
 
     render() {
@@ -75,6 +79,7 @@ class ConsultarCampanhas extends React.Component {
                                 url={campanha.url}
                                 descricao={"Grupos: " + campanha.quantidadeGrupos + "Redirecionamentos: " + campanha.quantidadeRedirecionamentos}
                                 deleteAction={this.abrirDialogConfirmarExclusao}
+                                editAction={this.editar}
                             >
                                 <Button href={`/#consultar-grupos/${campanha.id}`} size="large">Grupos</Button>
                             </Cartao>
