@@ -1,5 +1,7 @@
 import ApiService from './apiService'
 
+import authHeader from './auth-header';
+
 import ErroValidacao from '../exceptions/erroValidacao'
 
 export default class CampanhaService extends ApiService {
@@ -9,23 +11,23 @@ export default class CampanhaService extends ApiService {
     }
 
     findByIdUsuario(id) {
-        return this.get(`/usuarios/${id}/campanhas`)
+        return this.get(`/usuarios/${id}/campanhas`, { headers: authHeader() })
     }
 
     findById(id) {
-        return this.get(`/campanhas/${id}`)
+        return this.get(`/campanhas/${id}`, { headers: authHeader() })
     }
 
     deleteById(id) {
-        return this.delete(`/campanhas/${id}`)
+        return this.delete(`/campanhas/${id}`, { headers: authHeader() })
     }
 
     save(campanha) {
-        return this.post(`/campanhas/`, campanha)
+        return this.post(`/campanhas/`, campanha, { headers: authHeader() })
     }
 
     update(campanha) {
-        return this.put(`/campanhas/update/${campanha.id}`, campanha)
+        return this.put(`/campanhas/update/${campanha.id}`, campanha, { headers: authHeader() })
     }
 
     validar(campanha) {

@@ -19,19 +19,7 @@ import Menu from '@material-ui/core/Menu';
 import { mainListItems, secondaryListItems } from './listitems';
 
 import Rotas from '../main/rotas'
-
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="#">
-        JoinGroup
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
+import Copyright from './copyright'
 
 const drawerWidth = 240;
 
